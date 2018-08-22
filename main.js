@@ -43,16 +43,16 @@ function updateGameboardWithMove (playerNumber, xAxis, yAxis) {
      // ==== X axis checks ====
     currentSequence =1;
     for (var i = xAxis-1; i>=0; i--) {
-        console.log (" x -checking "+gameBoardArray[xAxis][i])
-        if (gameBoardArray[xAxis][i]=== playerNumber) {
-            currentSequence ++;;
+        console.log (" x -checking "+gameBoardArray[i][yAxis]);
+        if (gameBoardArray[yAxis][i]=== playerNumber) {
+            currentSequence ++;
             if (currentSequence > highestSequence) {highestSequence=currentSequence}
         } else {
             //break;
         }
     }
     for (var i = xAxis+1; i<gameBoardSize; i++) {
-        console.log (" x +checking "+gameBoardArray[xAxis][i])
+        console.log (" x +checking "+gameBoardArray[i][yAxis])
         if (gameBoardArray[xAxis][i]=== playerNumber) {
             currentSequence ++;;
             if (currentSequence > highestSequence) {highestSequence=currentSequence}
@@ -64,17 +64,17 @@ function updateGameboardWithMove (playerNumber, xAxis, yAxis) {
     // ==== Y axis checks ====
     currentSequence =1;
     for (var i = yAxis-1; i>=0; i--) {
-        console.log (" y -checking "+gameBoardArray[i][yAxis])
-        if (gameBoardArray[i][yAxis]=== playerNumber) {
-            currentSequence ++;;
+        console.log (" y -checking "+gameBoardArray[xAxis][i]);
+        if (gameBoardArray[yAxis][i]=== playerNumber) {
+            currentSequence ++;
             if (currentSequence > highestSequence) {highestSequence=currentSequence}
         } else {
             //break;
         }
     }
-    for (var i = xAxis+1; i<gameBoardSize; i++) {
-        console.log (" y +checking "+gameBoardArray[i][yAxis])
-        if (gameBoardArray[i][yAxis]=== playerNumber) {
+    for (var i = yAxis+1; i<gameBoardSize; i++) {
+        console.log (" y +checking "+gameBoardArray[xAxis][i])
+        if (gameBoardArray[xAxis][i]=== playerNumber) {
             currentSequence ++;;
             if (currentSequence > highestSequence) {highestSequence=currentSequence}
         } else {
@@ -83,17 +83,16 @@ function updateGameboardWithMove (playerNumber, xAxis, yAxis) {
     }
 
 
+    // ==== XminYmin -> XmaxYmax upperBoundary axis check ====
     var checkLimits = 0;
-    // ==== XY0 -> XY upperBoundary axis check ====
     currentSequence =1;
     if (xAxis<yAxis) {
         checkLimits = xAxis;
     } else {
         checkLimits = yAxis;
     }
-    console.log("checklimits "+checkLimits);
     for (var i = 1; i<= checkLimits; i++) {
-        console.log (" x0y0 -checking "+gameBoardArray[xAxis-i][yAxis-i]);
+        console.log (" XminYmin -checking "+gameBoardArray[xAxis-i][yAxis-i]);
         if (gameBoardArray[xAxis-i][yAxis-i]=== playerNumber) {
             currentSequence ++;
             if (currentSequence > highestSequence) {highestSequence=currentSequence}
@@ -101,4 +100,54 @@ function updateGameboardWithMove (playerNumber, xAxis, yAxis) {
             //break;
         }
     }
+    currentSequence =1;
+    if (xAxis>yAxis) {
+        checkLimits = gameBoardSize-xAxis-1;
+    } else {
+        checkLimits = gameBoardSize- yAxis-1;
+    }
+    for (var i = 1; i<= checkLimits; i++) {
+        console.log (" XmaxYmax +checking "+gameBoardArray[xAxis+i][yAxis+i]);
+        if (gameBoardArray[xAxis+i][yAxis+i]=== playerNumber) {
+            currentSequence ++;
+            if (currentSequence > highestSequence) {highestSequence=currentSequence}
+        } else {
+            //break;
+        }
+    }
+
+    // ==== XmaxYmin -> XminYmax axis check ====
+    currentSequence =1;
+    // -x +y
+    if (xAxis< gameBoardSize- yAxis) {
+        checkLimits = xAxis;
+    } else {
+        checkLimits = gameBoardSize - yAxis -1;
+    }
+
+    for (var i = 1; i<= checkLimits; i++) {
+        console.log (" XmaxYmin -checking "+gameBoardArray[xAxis-i][yAxis+i]);
+        if (gameBoardArray[xAxis-i][yAxis+i]=== playerNumber) {
+            currentSequence ++;
+            if (currentSequence > highestSequence) {highestSequence=currentSequence}
+        } else {
+            //break;
+        }
+    }
+    // +x -y
+    if (yAxis< gameBoardSize- xAxis) {
+        checkLimits = yAxis;
+    } else {
+        checkLimits = gameBoardSize - xAxis -1;
+    }
+    for (var i = 1; i<= checkLimits; i++) {
+        console.log (" XmaxYmin +checking "+gameBoardArray[xAxis+i][yAxis-i]);
+        if (gameBoardArray[xAxis+i][yAxis-i]=== playerNumber) {
+            currentSequence ++;
+            if (currentSequence > highestSequence) {highestSequence=currentSequence}
+        } else {
+            //break;
+        }
+    }
+
 }
