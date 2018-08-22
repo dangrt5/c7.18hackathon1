@@ -13,6 +13,14 @@ function populateGameBoardArray(boardSize) {
     }
 }
 
+class CreateNewPlayer {
+  constructor(playerNumber) {
+    this.player = playerNumber;
+    this.currentPlayerTurn = false;
+    this.playerWonGame = false;
+  }
+}
+
 function updateGameboardWithMove (playerNumber, xAxis, yAxis) {
     var highestSequence = 0;
     var currentSequence = 0;
