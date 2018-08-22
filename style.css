@@ -27,12 +27,15 @@ body {
 
 .gameBoard {
     /* border: 1px solid black;  */
+    position: relative;
     width: 70%;
     height: 600px;
     margin: auto;
 }
 
 div.row {
+    top: 0;
+    left: 0;
     width: 100%;
     height: 33.3%;
 }
@@ -41,8 +44,10 @@ div.row {
     height: 100%;
     width: 33.3%;
     display: inline-block;
-    background-color: lawngreen;
+    /* background-color: lawngreen; */
     border: 1px solid black;
+    font-size: 11.5vw;
+    text-align: center;
 }
 
 
