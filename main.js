@@ -13,3 +13,10 @@ function populateGameBoardArray(boardSize) {
     }
 }
 
+class CreateNewPlayer {
+  constructor(playerNumber) {
+    this.player = playerNumber;
+    this.currentPlayerTurn = false;
+    this.playerWonGame = false;
+  }
+}
