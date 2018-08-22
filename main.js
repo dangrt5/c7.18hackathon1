@@ -2,6 +2,10 @@ $(document).ready(initializeApp);
 
 var gameBoardArray = [];
 var gameBoardSize = 0;
+var player1;
+var player2;
+var currentPlayer = 1; 
+
 function populateGameBoardArray(boardSize) {
     gameBoardSize = boardSize;
     gameBoardArray = [];
@@ -15,53 +19,23 @@ function populateGameBoardArray(boardSize) {
     }
 }
 
-class CreateNewPlayer {
-  constructor(playerNumber, name) {
-    this.player = playerNumber;
-    this.playerName = name;
-    this.currentPlayerTurn = false;
-    this.playerWonGame = false;
-    this.playerSymbol;
-  }
-}
-
-
 function initializeApp() {
     addEventListeners();
 }
  
 function addEventListeners() {
-    $('.square').click(changeToXorO);
+    $('.square').click(playerOneAndTwo);
 }
 
-function changeToXorO() {
-    console.log('testing');
-    var squaresClicked = $(this);
-    $(squaresClicked).text('X');
-}
+function playerOneAndTwo() {
+    var currentSquareClicked = $(this);
 
-var player1;
-var player2;
-
-
-function askForPlayerData() {
-  player1 = prompt("Player 1: What is your name?");
-  player1 = new CreateNewPlayer(1, player1);
-  player1.symbol = prompt(player1.playerName, "would you like to be X's or O's?");
-
-  player2 = prompt("Player 2: What is your name?");
-  player2 = new CreateNewPlayer(2, player2);
-  if (player1.symbol === "X" || player1.symbol === "x") {
-    player2.symbol = "O";
-  } else {
-    player2.symbol = "X";
-  }
-
-
-
-  $(".p1Name").text(player1.playerName);
-  $(".p2Name").text(player2.playerName);
-
+    if (currentPlayer === 1) {
+        currentSquareClicked.text('X');
+    } else {
+        currentSquareClicked.text('O');
+    }
+    currentPlayer = 1 - currentPlayer;
 }
 
 function updateGameboardWithMove (playerNumber, xAxis, yAxis) {
