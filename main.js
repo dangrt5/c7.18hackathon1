@@ -1,3 +1,5 @@
+$(document).ready(initializeApp);
+
 var gameBoardArray = [];
 var gameBoardSize = 0;
 function populateGameBoardArray(boardSize) {
@@ -22,6 +24,20 @@ class CreateNewPlayer {
   }
 }
 
+function initializeApp() {
+    addEventListeners();
+}
+ 
+function addEventListeners() {
+    $('.square').click(changeToXorO);
+}
+
+function changeToXorO() {
+    console.log('testing');
+    var squaresClicked = $(this);
+    $(squaresClicked).text('X');
+}
+
 function askForPlayerData() {
   var player1 = prompt("Player 1: What is your name?");
   player1 = new CreateNewPlayer(1, player1);
@@ -29,10 +45,9 @@ function askForPlayerData() {
 
   var player2 = prompt("Player 2: What is your name?");
   player2 = new CreateNewPlayer(2, player2);
-  if(player1.symbol === "X" || player1.symbol === "x") {
+  if (player1.symbol === "X" || player1.symbol === "x") {
     player2.symbol = "O";
   }
-
 }
 
 function updateGameboardWithMove (playerNumber, xAxis, yAxis) {
@@ -81,7 +96,6 @@ function updateGameboardWithMove (playerNumber, xAxis, yAxis) {
             //break;
         }
     }
-
 
     var checkLimits = 0;
     // ==== XY0 -> XY upperBoundary axis check ====
