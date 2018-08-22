@@ -5,6 +5,7 @@ var gameBoardSize = 0;
 var currentPlayer = 1; 
 
 function populateGameBoardArray(boardSize) {
+    // resets gameboard Array, no visible front-end effect
     gameBoardSize = boardSize;
     gameBoardArray = [];
     var counter = 10;
@@ -36,48 +37,48 @@ function playerOneAndTwo() {
     currentPlayer = 1 - currentPlayer;
 }
 
-function updateGameboardWithMove (playerNumber, xAxis, yAxis) {
-    var highestSequence = 0;
-    var currentSequence = 0;
-    gameBoardArray[xAxis][yAxis] = playerNumber;
+function updateGameboardWithMove (playerNumber, nColumns, nRows) {
+    var highestVectorSequence = 0;
+    currentVectorSequence = 0;
+    gameBoardArray[nColumns][nRows] = playerNumber;
 
      // ==== X axis checks ====
-    currentSequence =1;
-    for (var i = xAxis-1; i>=0; i--) {
-        console.log (" x -checking "+gameBoardArray[i][yAxis]);
-        if (gameBoardArray[yAxis][i]=== playerNumber) {
-            currentSequence ++;
-            if (currentSequence > highestSequence) {highestSequence=currentSequence}
+    currentVectorSequence =1;
+    for (var i = nColumns-1; i>=0; i--) {
+        //console.log (" x -checking "+gameBoardArray[i][nRows]);
+        if (gameBoardArray[nRows][i]=== playerNumber) {
+            currentVectorSequence ++;
+            if (currentVectorSequence > highestVectorSequence) {highestVectorSequence=currentVectorSequence}
         } else {
             //break;
         }
     }
-    for (var i = xAxis+1; i<gameBoardSize; i++) {
-        console.log (" x +checking "+gameBoardArray[i][yAxis])
-        if (gameBoardArray[xAxis][i]=== playerNumber) {
-            currentSequence ++;;
-            if (currentSequence > highestSequence) {highestSequence=currentSequence}
+    for (var i = nColumns+1; i<gameBoardSize; i++) {
+        //console.log (" x +checking "+gameBoardArray[i][nRows]);
+        if (gameBoardArray[nColumns][i]=== playerNumber) {
+            currentVectorSequence ++;;
+            if (currentVectorSequence > highestVectorSequence) {highestVectorSequence=currentVectorSequence}
         } else {
             //break;
         }
     }
 
     // ==== Y axis checks ====
-    currentSequence =1;
-    for (var i = yAxis-1; i>=0; i--) {
-        console.log (" y -checking "+gameBoardArray[xAxis][i]);
-        if (gameBoardArray[yAxis][i]=== playerNumber) {
-            currentSequence ++;
-            if (currentSequence > highestSequence) {highestSequence=currentSequence}
+    currentVectorSequence =1;
+    for (var i = nRows-1; i>=0; i--) {
+        //console.log (" y -checking "+gameBoardArray[nColumns][i]);
+        if (gameBoardArray[nRows][i]=== playerNumber) {
+            currentVectorSequence ++;
+            if (currentVectorSequence > highestVectorSequence) {highestVectorSequence=currentVectorSequence}
         } else {
             //break;
         }
     }
-    for (var i = yAxis+1; i<gameBoardSize; i++) {
-        console.log (" y +checking "+gameBoardArray[xAxis][i])
-        if (gameBoardArray[xAxis][i]=== playerNumber) {
-            currentSequence ++;;
-            if (currentSequence > highestSequence) {highestSequence=currentSequence}
+    for (var i = nRows+1; i<gameBoardSize; i++) {
+        //console.log (" y +checking "+gameBoardArray[nColumns][i])
+        if (gameBoardArray[nColumns][i]=== playerNumber) {
+            currentVectorSequence ++;
+            if (currentVectorSequence > highestVectorSequence) {highestVectorSequence=currentVectorSequence}
         } else {
             //break;
         }
@@ -86,66 +87,64 @@ function updateGameboardWithMove (playerNumber, xAxis, yAxis) {
     // ==== XminYmin -> XmaxYmax upperBoundary axis check ====
 
     var checkLimits = 0;
-    currentSequence =1;
-    if (xAxis<yAxis) {
-        checkLimits = xAxis;
+    currentVectorSequence =1;
+    if (nColumns<nRows) {
+        checkLimits = nColumns;
     } else {
-        checkLimits = yAxis;
+        checkLimits = nRows;
     }
     for (var i = 1; i<= checkLimits; i++) {
-        console.log (" XminYmin -checking "+gameBoardArray[xAxis-i][yAxis-i]);
-        if (gameBoardArray[xAxis-i][yAxis-i]=== playerNumber) {
-            currentSequence ++;
-            if (currentSequence > highestSequence) {highestSequence=currentSequence}
+        //console.log (" XminYmin -checking "+gameBoardArray[nColumns-i][nRows-i]);
+        if (gameBoardArray[nColumns-i][nRows-i]=== playerNumber) {
+            currentVectorSequence ++;
+            if (currentVectorSequence > highestVectorSequence) {highestVectorSequence=currentVectorSequence}
         } else {
             //break;
         }
     }
-    currentSequence =1;
-    if (xAxis>yAxis) {
-        checkLimits = gameBoardSize-xAxis-1;
+    currentVectorSequence =1;
+    if (nColumns>nRows) {
+        checkLimits = gameBoardSize-nColumns-1;
     } else {
-        checkLimits = gameBoardSize- yAxis-1;
+        checkLimits = gameBoardSize- nRows-1;
     }
     for (var i = 1; i<= checkLimits; i++) {
-        console.log (" XmaxYmax +checking "+gameBoardArray[xAxis+i][yAxis+i]);
-        if (gameBoardArray[xAxis+i][yAxis+i]=== playerNumber) {
-            currentSequence ++;
-            if (currentSequence > highestSequence) {highestSequence=currentSequence}
+        //console.log (" XmaxYmax +checking "+gameBoardArray[nColumns+i][nRows+i]);
+        if (gameBoardArray[nColumns+i][nRows+i]=== playerNumber) {
+            currentVectorSequence ++;
+            if (currentVectorSequence > highestVectorSequence) {highestVectorSequence=currentVectorSequence}
         } else {
             //break;
         }
     }
 
     // ==== XmaxYmin -> XminYmax axis check ====
-    currentSequence =1;
-    // -x +y
-    if (xAxis< gameBoardSize- yAxis) {
-        checkLimits = xAxis;
+    currentVectorSequence =1;
+    if (nColumns< gameBoardSize- nRows) {
+        checkLimits = nColumns;
     } else {
-        checkLimits = gameBoardSize - yAxis -1;
+        checkLimits = gameBoardSize - nRows -1;
     }
 
     for (var i = 1; i<= checkLimits; i++) {
-        console.log (" XmaxYmin -checking "+gameBoardArray[xAxis-i][yAxis+i]);
-        if (gameBoardArray[xAxis-i][yAxis+i]=== playerNumber) {
-            currentSequence ++;
-            if (currentSequence > highestSequence) {highestSequence=currentSequence}
+        //console.log (" XmaxYmin -checking "+gameBoardArray[nColumns-i][nRows+i]);
+        if (gameBoardArray[nColumns-i][nRows+i]=== playerNumber) {
+            currentVectorSequence ++;
+            if (currentVectorSequence > highestVectorSequence) {highestVectorSequence=currentVectorSequence}
         } else {
             //break;
         }
     }
-    // +x -y
-    if (yAxis< gameBoardSize- xAxis) {
-        checkLimits = yAxis;
+    if (nRows< gameBoardSize- nColumns) {
+        checkLimits = nRows;
     } else {
-        checkLimits = gameBoardSize - xAxis -1;
+        checkLimits = gameBoardSize - nColumns -1;
     }
     for (var i = 1; i<= checkLimits; i++) {
-        console.log (" XmaxYmin +checking "+gameBoardArray[xAxis+i][yAxis-i]);
-        if (gameBoardArray[xAxis+i][yAxis-i]=== playerNumber) {
-            currentSequence ++;
-            if (currentSequence > highestSequence) {highestSequence=currentSequence}
+        //console.log (" XmaxYmin +checking "+gameBoardArray[nColumns+i][nRows-i]);
+        if (gameBoardArray[nColumns+i][nRows-i]=== playerNumber) {
+            currentVectorSequence ++;
+            if (currentVectorSequence > highestVectorSequence) {highestVectorSequence=currentVectorSequence}
         } else {
             //break;
         }
