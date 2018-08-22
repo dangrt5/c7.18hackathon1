@@ -1,1 +1,1 @@
-// comment
+function test() {}
