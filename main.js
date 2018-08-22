@@ -2,8 +2,6 @@ $(document).ready(initializeApp);
 
 var gameBoardArray = [];
 var gameBoardSize = 0;
-var player1;
-var player2;
 var currentPlayer = 1; 
 
 function populateGameBoardArray(boardSize) {
@@ -85,8 +83,6 @@ function updateGameboardWithMove (playerNumber, xAxis, yAxis) {
         }
     }
 
-
-
     // ==== XminYmin -> XmaxYmax upperBoundary axis check ====
 
     var checkLimits = 0;
@@ -154,5 +150,4 @@ function updateGameboardWithMove (playerNumber, xAxis, yAxis) {
             //break;
         }
     }
-
 }
