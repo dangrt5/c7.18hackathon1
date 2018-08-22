@@ -68,34 +68,23 @@ function updateGameboardWithMove (playerNumber, xAxis, yAxis) {
         }
     }
 
-    var loopCounter = 0;
+
     var checkLimits = 0;
     // ==== XY0 -> XY upperBoundary axis check ====
     currentSequence =1;
-    loopCounter = 0;
     if (xAxis<yAxis) {
         checkLimits = xAxis;
     } else {
         checkLimits = yAxis;
     }
-
-
-    for (checkLimits; checkLimits>=0; checkLimits--) {
-        console.log (" x0y0 -checking "+gameBoardArray[i][yAxis])
-        if (gameBoardArray[i][yAxis]=== playerNumber) {
-            currentSequence ++;;
+    console.log("checklimits "+checkLimits);
+    for (var i = 1; i<= checkLimits; i++) {
+        console.log (" x0y0 -checking "+gameBoardArray[xAxis-i][yAxis-i]);
+        if (gameBoardArray[xAxis-i][yAxis-i]=== playerNumber) {
+            currentSequence ++;
             if (currentSequence > highestSequence) {highestSequence=currentSequence}
         } else {
-            break;
-        }
-    }
-    for (var i = xAxis+1; i<gameBoardSize-1; i++) {
-        console.log (" x0y0 +checking "+gameBoardArray[i][yAxis])
-        if (gameBoardArray[i][yAxis]=== playerNumber) {
-            currentSequence ++;;
-            if (currentSequence > highestSequence) {highestSequence=currentSequence}
-        } else {
-            break;
+            //break;
         }
     }
 }
