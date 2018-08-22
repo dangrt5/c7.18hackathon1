@@ -14,11 +14,25 @@ function populateGameBoardArray(boardSize) {
 }
 
 class CreateNewPlayer {
-  constructor(playerNumber) {
+  constructor(playerNumber, name) {
     this.player = playerNumber;
+    this.playerName = this.name;
     this.currentPlayerTurn = false;
     this.playerWonGame = false;
   }
+}
+
+function askForPlayerData() {
+  var player1 = prompt("Player 1: What is your name?");
+  player1 = new CreateNewPlayer(1, player1);
+  player1.symbol = prompt(player1.playerName, "would you like to be X's or O's?");
+
+  var player2 = prompt("Player 2: What is your name?");
+  player2 = new CreateNewPlayer(2, player2);
+  if(player1.symbol === "X" || player1.symbol === "x") {
+    player2.symbol = "O";
+  }
+
 }
 
 function updateGameboardWithMove (playerNumber, xAxis, yAxis) {
