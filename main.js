@@ -67,7 +67,10 @@ function createGameBoard(boardSize) {
 
 function initializeApp() {
     addEventListeners();
-    populateGameBoardArray(3);
+    $("#newGame").on('animationend', function(event) {
+        $(this).removeClass('flashRed');
+    });
+    ;
 }
 
 function addEventListeners() {
@@ -119,6 +122,7 @@ function reportGameEnded (currentPlayer) {
         modalDiv.css("display","none");
     })
     playSound('sounds/joker.mp3');
+    occupiedSquares=0;
 }
 
 function gridSize() {
@@ -129,8 +133,8 @@ function gridSize() {
 
 function newGame() {
     $('.square').remove();
-    gameBoardArray.splice(0);
     populateGameBoardArray(3);
+    $("#newGame").addClass('flashRed');
 }
 
 function playSound(sound) {
