@@ -33,8 +33,6 @@ body {
 
 .gameBoard {
     position: relative;
-    width: 40vw;
-    height: 60vh;
     margin: auto;
     font-family: alphaFont;
 }
@@ -52,7 +50,6 @@ div.row {
 
 .square {
     height: 100%;
-    width: 33.3%;
     display: inline-block;
     /* background-color: lawngreen; */
     border: 1px solid black;
@@ -112,4 +109,34 @@ div.row {
 
 .O {
   color: #e21d26;
+}
+
+.threeByThreeGameBoard {
+  width: 40vw;
+  height: 65vh;
+}
+
+.threeByThreeSquares {
+  width: 33.3%;
+  height: 100%;
+}
+
+.fourByFourGameBoard {
+  width: 50vw;
+  height: 51vh;
+}
+
+.fourByFourSquares {
+  width: 24.3%;
+  height: 100%;
+}
+
+.fiveByFiveGameBoard {
+  width: 52vw;
+  height: 41vh;
+}
+
+.fiveByFiveSquares {
+  width: 19.1%;
+  height: 100%;
 }

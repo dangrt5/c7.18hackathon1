@@ -29,6 +29,20 @@ function createGameBoard(boardSize) {
        squares.appendTo(row);
     }
     row.appendTo(".gameBoard");
+    if (boardSize === "3") {
+
+      $(".gameBoard").addClass("threeByThreeGameBoard");
+      $(".square").addClass("threeByThreeSquares");
+    }
+    if (boardSize === "4") {
+      $(".gameBoard").addClass("fourByFourGameBoard");
+      $(".square").addClass("fourByFourSquares");
+    }
+    if (boardSize === "5") {
+      $(".gameBoard").addClass("fiveByFiveGameBoard");
+      $(".square").addClass("fiveByFiveSquares");
+      $(".square").css("font-size", "5vw");
+    }
   }
 }
 
@@ -39,8 +53,8 @@ function initializeApp() {
 
 function addEventListeners() {
     $('.resetButtons').on('click', 'button' ,gridSize);
-    $('.game    Board').on('click', '.square', playerOneAndTwo);
-    
+    $('.gameBoard').on('click', '.square', playerOneAndTwo);
+
 }
 
 function playerOneAndTwo() {
