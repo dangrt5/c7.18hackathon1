@@ -2,7 +2,7 @@ $(document).ready(initializeApp);
 
 var gameBoardArray = [];
 var gameBoardSize = 0;
-var currentPlayer = 1; 
+var currentPlayer = 1;
 
 function populateGameBoardArray(boardSize) {
     // resets gameboard Array, no visible front-end effect
@@ -42,11 +42,13 @@ function addEventListeners() {
 
 
 function playerOneAndTwo() {
-    if ($(this).hasClass("notAvailable")) {return}
+    if ($(this).hasClass("notAvailable")) {
+      return;
+    }
     $(this).addClass("notAvailable");
     var currentSquareClicked = $(this);
-    var columnCoordinate = currentSquareClicked.attr('columns');
-    var rowCoordinate = currentSquareClicked.parent().attr('rows');
+    var columnCoordinate = parseInt(currentSquareClicked.attr('columns'));
+    var rowCoordinate = parseInt(currentSquareClicked.parent().attr('rows'));
 
     if (currentPlayer === 1) {
         currentSquareClicked.text('X');
