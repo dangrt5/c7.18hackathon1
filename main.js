@@ -3,6 +3,7 @@ $(document).ready(initializeApp);
 var gameBoardArray = [];
 var gameBoardSize = 0;
 var currentPlayer = 1;
+var gridSize = gridSize();
 
 function populateGameBoardArray(boardSize) {
     // resets gameboard Array, no visible front-end effect
@@ -37,6 +38,7 @@ function initializeApp() {
 
 function addEventListeners() {
     $('.row').on("click", ".square", playerOneAndTwo);
+    $('.resetButtons button').click(gridSize);
 }
 
 function playerOneAndTwo() {
@@ -54,8 +56,13 @@ function playerOneAndTwo() {
         currentSquareClicked.text('O');
     }
     currentPlayer = 1 - currentPlayer;
-
     updateGameboardWithMove(currentPlayer, columnCoordinate, rowCoordinate);
+}
+
+function gridSize() {
+    var gridSizeButton = $(this).attr('gridSize');
+    console.log(gridSizeButton);
+    // createGameBoard(gridSizeButton);
 }
 
 function updateGameboardWithMove (playerNumber, nColumns, nRows) {
