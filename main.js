@@ -38,8 +38,9 @@ function initializeApp() {
 }
 
 function addEventListeners() {
-    $('.row').on('click', '.square', playerOneAndTwo);
     $('.resetButtons').on('click', 'button' ,gridSize);
+    $('.game    Board').on('click', '.square', playerOneAndTwo);
+    
 }
 
 function playerOneAndTwo() {
