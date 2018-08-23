@@ -5,6 +5,7 @@
 
 * {
   box-sizing: border-box;
+   #border: solid black 1px;
 }
 
 body {
@@ -17,7 +18,7 @@ body {
 
 .header {
     text-align: center;
-    border-bottom: 1px solid black;
+    #border-bottom: 1px solid black;
     font-size: 2vw;
 }
 
@@ -69,12 +70,14 @@ div.row {
 }
 
 .resetButtons button {
+    font-family: alphaFont;
+    src: url("fonts/font2.otf");
     border-radius: 10px;
     box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.55);
-  width: 9vw;
-  height: 7vh;
-  margin: 0 2%;
-  font-size: 1vw;
+    width: 9vw;
+    height: 7vh;
+    margin: 0 2%;
+    font-size: 1.4vw;
 }
 
 .scoreAndPlayers {
@@ -131,23 +134,12 @@ div.row {
 }
 
 @keyframes actionButton {
-    from {background-color: red;}
-    to {background-color: #222222;}
+    from {background-color: limegreen;}
+    to {background-color: gainsboro;}
 }
-.reset.flashRed {
+.flashRed {
     animation-name: actionButton;
-    animation-duration: 0.5s;
+    animation-duration: 1.5s;
 }
 
 
-.calculator__display {
-}
-
-.calculator__display.flashRed {
-    animation-name: error;
-    animation-duration: 0.5s;
-}
-@keyframes error {
-    from {background-color: red;}
-    to {background-color: #222222;}
-}

@@ -72,9 +72,13 @@ function createGameBoard(boardSize) {
 
 function initializeApp() {
     addEventListeners();
-    $("#newGame").on('animationend', function(event) {
+    //$("#newGame").on('animationend', function(event) {
+    //    $(this).removeClass('flashRed');
+    //});
+    $(".resetButtons > button").on('animationend', function(event) {
         $(this).removeClass('flashRed');
     });
+
     ;
 }
 
@@ -126,6 +130,7 @@ function reportGameEnded (currentPlayer) {
 }
 
 function gridSize() {
+    $(this).addClass('flashRed');
     var gridSizeButton = $(this).attr('gridSize');
     $('.gameBoard').empty();
     createGameBoard(gridSizeButton);
@@ -134,7 +139,7 @@ function gridSize() {
 function newGame() {
     $('.square').remove();
     populateGameBoardArray(3);
-    $("#newGame").addClass('flashRed');
+    $(this).addClass('flashRed');
 }
 
 function playSound(sound) {
