@@ -194,4 +194,6 @@ function updateGameboardWithMove (playerNumber, nColumns, nRows) {
 }
 
 function AnyFunction() {}
+function AnyFunction2() {}
+
 
