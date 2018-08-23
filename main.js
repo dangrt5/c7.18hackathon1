@@ -80,23 +80,27 @@ function playerOneAndTwo() {
     var currentSquareClicked = $(this);
     var columnCoordinate = parseInt(currentSquareClicked.attr('columns'));
     var rowCoordinate = parseInt(currentSquareClicked.parent().attr('rows'));
-
     if ($(this).hasClass("notAvailable")) {
         return;
     }
     $(this).addClass("notAvailable");
-
     if (currentPlayer === 1) {
         currentSquareClicked.text('X');
     } else {
         currentSquareClicked.addClass("O");
         currentSquareClicked.text('O');
     }
+    playClickSoundEffect();
     currentPlayer = 1 - currentPlayer;
     if  (updateGameboardWithMove(currentPlayer, columnCoordinate, rowCoordinate) >= winCondition) {
         reportWinner (currentPlayer);
     }
 }
+
+function playClickSoundEffect() {
+  $(".clickSound").get(0).play();
+}
+
 function reportWinner (currentPlayer) {
     var modalDiv = $("#myModal");
     $("#winnerInformation").text("Winner is " + currentPlayer);
@@ -241,4 +245,3 @@ function updateGameboardWithMove (playerNumber, nRows, nColumns) {
     console.log("Highest sequence: "+ highestVectorSequence);
     return highestVectorSequence;
 }
-
