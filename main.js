@@ -15,23 +15,26 @@ function populateGameBoardArray(boardSize) {
     }
 }
 
-class CreateNewPlayer {
-  constructor(playerNumber, name) {
-    this.player = playerNumber;
-    this.playerName = name;
-    this.currentPlayerTurn = false;
-    this.playerWonGame = false;
-    this.playerSymbol;
+function createGameBoard(boardSize) {
+  for(var x = 0 ; x < boardSize; x++) {
+     var row = $("<div>").addClass("row");
+     for(var y = 0; y < boardSize; y++) {
+       var squares = $("<div>").addClass("square");
+       squares.appendTo(row);
+    } row.appendTo(".gameBoard");
   }
 }
 
 
+
+
 function initializeApp() {
+    createGameBoard(3);
     addEventListeners();
 }
- 
+
 function addEventListeners() {
-    $('.square').click(changeToXorO);
+    $('.row').on("click", ".square", changeToXorO);
 }
 
 function changeToXorO() {
@@ -40,29 +43,10 @@ function changeToXorO() {
     $(squaresClicked).text('X');
 }
 
-var player1;
-var player2;
-
-
-function askForPlayerData() {
-  player1 = prompt("Player 1: What is your name?");
-  player1 = new CreateNewPlayer(1, player1);
-  player1.symbol = prompt(player1.playerName, "would you like to be X's or O's?");
-
-  player2 = prompt("Player 2: What is your name?");
-  player2 = new CreateNewPlayer(2, player2);
-  if (player1.symbol === "X" || player1.symbol === "x") {
-    player2.symbol = "O";
-  } else {
-    player2.symbol = "X";
-  }
 
 
 
-  $(".p1Name").text(player1.playerName);
-  $(".p2Name").text(player2.playerName);
 
-}
 
 function updateGameboardWithMove (playerNumber, xAxis, yAxis) {
     var highestSequence = 0;
