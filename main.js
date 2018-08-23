@@ -27,6 +27,7 @@ function populateGameBoardArray(boardSize) {
 }
 
 function createGameBoard(boardSize) {
+    currentPlayer = 1;
   for(var x = 0 ; x < boardSize; x++) {
      var row = $("<div>").addClass("row").attr('rows', x);
      for(var y = 0; y < boardSize; y++) {
@@ -135,6 +136,7 @@ function newGame() {
     $('.square').remove();
     populateGameBoardArray(3);
     $("#newGame").addClass('flashRed');
+    currentPlayer = 1;
 }
 
 function playSound(sound) {
