@@ -20,17 +20,19 @@ function populateGameBoardArray(boardSize) {
 
 function createGameBoard(boardSize) {
   for(var x = 0 ; x < boardSize; x++) {
-     var row = $("<div>").addClass("row");
+     var row = $("<div>").addClass("row").attr('rows', x);
      for(var y = 0; y < boardSize; y++) {
-       var squares = $("<div>").addClass("square");
+       var squares = $("<div>").addClass("square").attr('columns', y);
        squares.appendTo(row);
-    } row.appendTo(".gameBoard");
+    }
+    row.appendTo(".gameBoard");
   }
 }
 
 function initializeApp() {
     createGameBoard(3);
     addEventListeners();
+    populateGameBoardArray(3);
 }
 
 function addEventListeners() {
@@ -39,6 +41,8 @@ function addEventListeners() {
 
 function playerOneAndTwo() {
     var currentSquareClicked = $(this);
+    var columnCoordinate = currentSquareClicked.attr('columns');
+    var rowCoordinate = currentSquareClicked.parent().attr('rows');
 
     if (currentPlayer === 1) {
         currentSquareClicked.text('X');
@@ -46,13 +50,13 @@ function playerOneAndTwo() {
         currentSquareClicked.text('O');
     }
     currentPlayer = 1 - currentPlayer;
+    updateGameboardWithMove(currentPlayer, columnCoordinate, rowCoordinate);
 }
 
 function updateGameboardWithMove (playerNumber, nColumns, nRows) {
     var highestVectorSequence = 1;
     currentVectorSequence = 1;
     gameBoardArray[nColumns][nRows] = playerNumber;
-
 
      // ==== X axis checks ====
     currentVectorSequence =1;
