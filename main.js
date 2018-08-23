@@ -59,7 +59,7 @@ function playerOneAndTwo() {
         currentSquareClicked.text('O');
     }
     currentPlayer = 1 - currentPlayer;
-    if  (updateGameboardWithMove(currentPlayer, columnCoordinate, rowCoordinate)) {
+    if  (updateGameboardWithMove(currentPlayer, columnCoordinate, rowCoordinate) >= winCondition) {
         reportWinner (currentPlayer);
     }
 }
@@ -192,3 +192,6 @@ function updateGameboardWithMove (playerNumber, nColumns, nRows) {
     }
     return highestVectorSequence;
 }
+
+function AnyFunction() {}
+
