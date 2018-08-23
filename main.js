@@ -34,6 +34,7 @@ function createGameBoard(boardSize) {
 
 function initializeApp() {
     addEventListeners();
+    populateGameBoardArray(3);
 }
 
 function addEventListeners() {
