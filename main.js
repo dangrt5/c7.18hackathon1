@@ -34,7 +34,7 @@ function initializeApp() {
 }
 
 function addEventListeners() {
-    $('.row').on("click", ".square", changeToXorO);
+    $('.row').on("click", ".square", playerOneAndTwo);
 }
 
 function playerOneAndTwo() {
