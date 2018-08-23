@@ -6,7 +6,6 @@ var gameBoardSize = 0;
 var currentPlayer = 1;
 var winCondition = 3;
 var occupiedSquares =0;
-
 var sounds = {
     click: 'sounds/clickSound.mp3',
     joker: 'sounds/joker.mp3',
@@ -27,6 +26,7 @@ function populateGameBoardArray(boardSize) {
 }
 
 function createGameBoard(boardSize) {
+    currentPlayer = 1;
   for(var x = 0 ; x < boardSize; x++) {
      var row = $("<div>").addClass("row").attr('rows', x);
      for(var y = 0; y < boardSize; y++) {
@@ -84,6 +84,7 @@ function initializeApp() {
 
 function addEventListeners() {
     $('.gameBoard').on('click', '.square', playerOneAndTwo);
+    $(".resetButtons").click(clickSound);
     $('.resetButtons:not(.reset)').on('click', 'button' ,gridSize);
     $('button.reset').click(newGame);
 }
@@ -145,6 +146,10 @@ function newGame() {
 function playSound(sound) {
     var audio = new Audio(sound);
     audio.play();
+}
+
+function clickSound() {
+  playSound(sounds.click);
 }
 
 function updateGameboardWithMove (playerNumber, nRows, nColumns) {
