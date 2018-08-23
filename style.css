@@ -4,12 +4,14 @@
 }
 
 * {
-    box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 body {
     margin: 0;
     font-size: 0;
+    background: url("images/background.jpg");
+    background-size: 110% auto;
 }
 
 .header {
@@ -34,7 +36,6 @@ body {
     width: 40vw;
     height: 60vh;
     margin: auto;
-    /* border: 2px solid black; */
     font-family: alphaFont;
 }
 
@@ -91,3 +92,11 @@ div.row {
 }
 
 .notAvailable {}
+
+.X {
+  color: #53a239;
+}
+
+.O {
+  color: #e21d26;
+}
