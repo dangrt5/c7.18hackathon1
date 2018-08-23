@@ -74,8 +74,17 @@ function playerOneAndTwo() {
         currentSquareClicked.text('O');
     }
     currentPlayer = 1 - currentPlayer;
-    var retVal = updateGameboardWithMove(currentPlayer, columnCoordinate, rowCoordinate);
-
+    if  (updateGameboardWithMove(currentPlayer, columnCoordinate, rowCoordinate) >= winCondition) {
+        reportWinner (currentPlayer);
+    }
+}
+function reportWinner (currentPlayer) {
+    var modalDiv = $("#myModal");
+    $("#winnerInformation").text("Winner is " + currentPlayer);
+    modalDiv.css("display","block");
+    modalDiv.click( function () {
+        modalDiv.css("display","none");
+    })
 }
 
 function gridSize() {
@@ -203,3 +212,8 @@ function updateGameboardWithMove (playerNumber, nColumns, nRows) {
     }
     return highestVectorSequence;
 }
+
+function AnyFunction() {}
+function AnyFunction2() {}
+
+
