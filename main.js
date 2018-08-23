@@ -30,7 +30,7 @@ function createGameBoard(boardSize) {
 }
 
 function initializeApp() {
-    createGameBoard(3);
+    createGameBoard(5);
     addEventListeners();
     populateGameBoardArray(3);
 }
@@ -59,6 +59,9 @@ function playerOneAndTwo() {
 }
 
 function updateGameboardWithMove (playerNumber, nColumns, nRows) {
+    nColumns = parseFloat(nColumns);
+    nRows = parseFloat(nRows);
+    console.log(currentPlayer, nColumns, nRows);
     var highestVectorSequence = 1;
     currentVectorSequence = 1;
     gameBoardArray[nColumns][nRows] = playerNumber;
