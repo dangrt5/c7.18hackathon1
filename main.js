@@ -37,7 +37,11 @@ function addEventListeners() {
     $('.row').on("click", ".square", playerOneAndTwo);
 }
 
+
+
 function playerOneAndTwo() {
+    if ($(this).hasClass("notAvailable")) {return}
+    $(this).addClass("notAvailable");
     var currentSquareClicked = $(this);
 
     if (currentPlayer === 1) {
@@ -46,6 +50,7 @@ function playerOneAndTwo() {
         currentSquareClicked.text('O');
     }
     currentPlayer = 1 - currentPlayer;
+
 }
 
 function updateGameboardWithMove (playerNumber, nColumns, nRows) {
