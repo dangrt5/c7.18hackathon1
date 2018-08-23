@@ -59,7 +59,7 @@ div.row {
 }
 
 .resetbuttonContainer {
-  border: solid black 1px;
+  /* border: solid black 1px; */
 }
 
 .resetButtons {
@@ -124,34 +124,4 @@ div.row {
 
 .O {
   color: #e21d26;
-}
-
-.threeByThreeGameBoard {
-  width: 40vw;
-  height: 65vh;
-}
-
-.threeByThreeSquares {
-  width: 33.3%;
-  height: 100%;
-}
-
-.fourByFourGameBoard {
-  width: 50vw;
-  height: 51vh;
-}
-
-.fourByFourSquares {
-  width: 24.3%;
-  height: 100%;
-}
-
-.fiveByFiveGameBoard {
-  width: 52vw;
-  height: 41vh;
-}
-
-.fiveByFiveSquares {
-  width: 19.1%;
-  height: 100%;
 }
