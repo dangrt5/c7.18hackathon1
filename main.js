@@ -4,7 +4,6 @@ $(document).ready(initializeApp);
 var gameBoardArray = [];
 var gameBoardSize = 0;
 var currentPlayer = 1;
-var gridSize = gridSize();
 var winCondition = 3;
 
 
@@ -67,7 +66,7 @@ function gridSize() {
     var gridSizeButton = $(this).attr('gridSize');
     $('.gameBoard').empty();
     createGameBoard(gridSizeButton);
-    
+
 }
 
 function updateGameboardWithMove (playerNumber, nColumns, nRows) {
