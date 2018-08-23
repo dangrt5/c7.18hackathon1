@@ -18,12 +18,23 @@ function populateGameBoardArray(boardSize) {
     }
 }
 
+function createGameBoard(boardSize) {
+  for(var x = 0 ; x < boardSize; x++) {
+     var row = $("<div>").addClass("row");
+     for(var y = 0; y < boardSize; y++) {
+       var squares = $("<div>").addClass("square");
+       squares.appendTo(row);
+    } row.appendTo(".gameBoard");
+  }
+}
+
 function initializeApp() {
+    createGameBoard(3);
     addEventListeners();
 }
- 
+
 function addEventListeners() {
-    $('.square').click(playerOneAndTwo);
+    $('.row').on("click", ".square", changeToXorO);
 }
 
 function playerOneAndTwo() {
@@ -41,6 +52,7 @@ function updateGameboardWithMove (playerNumber, nColumns, nRows) {
     var highestVectorSequence = 0;
     currentVectorSequence = 0;
     gameBoardArray[nColumns][nRows] = playerNumber;
+
 
      // ==== X axis checks ====
     currentVectorSequence =1;
