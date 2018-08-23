@@ -53,6 +53,7 @@ function playerOneAndTwo() {
     if (currentPlayer === 1) {
         currentSquareClicked.text('X');
     } else {
+        currentSquareClicked.addClass("O");
         currentSquareClicked.text('O');
     }
     currentPlayer = 1 - currentPlayer;
