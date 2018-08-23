@@ -72,7 +72,10 @@ function createGameBoard(boardSize) {
 
 function initializeApp() {
     addEventListeners();
-    populateGameBoardArray(3);
+    $("#newGame").on('animationend', function(event) {
+        $(this).removeClass('flashRed');
+    });
+    ;
 }
 
 function addEventListeners() {
@@ -131,6 +134,7 @@ function gridSize() {
 function newGame() {
     $('.square').remove();
     populateGameBoardArray(3);
+    $("#newGame").addClass('flashRed');
 }
 
 function playSound(sound) {

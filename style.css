@@ -12,6 +12,7 @@ body {
     font-size: 0;
     background: url("images/background.jpg");
     background-size: 110% auto;
+    background-repeat: no-repeat;
 }
 
 .header {
@@ -63,10 +64,13 @@ div.row {
 }
 
 .resetButtons {
-  text-align: center;
+
+    text-align: center;
 }
 
 .resetButtons button {
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.55);
   width: 9vw;
   height: 7vh;
   margin: 0 2%;
@@ -124,4 +128,26 @@ div.row {
 
 .O {
   color: #e21d26;
+}
+
+@keyframes actionButton {
+    from {background-color: red;}
+    to {background-color: #222222;}
+}
+.reset.flashRed {
+    animation-name: actionButton;
+    animation-duration: 0.5s;
+}
+
+
+.calculator__display {
+}
+
+.calculator__display.flashRed {
+    animation-name: error;
+    animation-duration: 0.5s;
+}
+@keyframes error {
+    from {background-color: red;}
+    to {background-color: #222222;}
 }
