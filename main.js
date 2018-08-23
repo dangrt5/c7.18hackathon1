@@ -7,6 +7,11 @@ var currentPlayer = 1;
 var winCondition = 3;
 var occupiedSquares =0;
 
+var sounds = {
+    click: 'sounds/clickSound.mp3',
+    joker: 'sounds/joker.mp3',
+}
+
 function populateGameBoardArray(boardSize) {
     // resets gameboard Array, no visible front-end effect
     gameBoardSize = boardSize;
@@ -83,6 +88,7 @@ function playerOneAndTwo() {
     var currentSquareClicked = $(this);
     var columnCoordinate = parseInt(currentSquareClicked.attr('columns'));
     var rowCoordinate = parseInt(currentSquareClicked.parent().attr('rows'));
+
     if ($(this).hasClass("notAvailable")) {
         return;
     }
@@ -93,7 +99,7 @@ function playerOneAndTwo() {
         currentSquareClicked.addClass("O");
         currentSquareClicked.text('O');
     }
-    playClickSoundEffect();
+    playSound(sounds.click);
     currentPlayer = 1 - currentPlayer;
     occupiedSquares ++;
     if  (updateGameboardWithMove(currentPlayer, columnCoordinate, rowCoordinate) >= winCondition) {
@@ -104,13 +110,7 @@ function playerOneAndTwo() {
     }
 }
 
-
-function playClickSoundEffect() {
-  $(".clickSound").get(0).play();
-}
-
 function reportGameEnded (currentPlayer) {
-
     var modalDiv = $("#myModal");
     if (currentPlayer>-1) {
         $("#winnerInformation").text("Winner is " + currentPlayer);
@@ -121,8 +121,8 @@ function reportGameEnded (currentPlayer) {
     modalDiv.click( function () {
         modalDiv.css("display","none");
     })
-    playSound('sounds/joker.mp3');
-    occupiedSquares=0;
+    playSound(sounds.joker);
+    occupiedSquares = 0;
 }
 
 function gridSize() {
