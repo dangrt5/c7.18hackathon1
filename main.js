@@ -118,15 +118,24 @@ function newGame() {
     populateGameBoardArray(3);
 }
 
-function updateGameboardWithMove (playerNumber, nColumns, nRows) {
+function updateGameboardWithMove (playerNumber, nRows, nColumns) {
+    console.log ("nColumn:"+ nColumns);
+    console.log("nRows:" +nRows);
+    console.log("player:" + playerNumber);
+
+    //var tempSwitchValues =  nRows;
+    //nColumns = nRows;
+    //nRows = nColumns;
+
+
     var highestVectorSequence = 1;
     currentVectorSequence = 1;
     gameBoardArray[nColumns][nRows] = playerNumber;
 
-     // ==== X axis checks ====
+     // ==== column connector checks ====
     currentVectorSequence =1;
     for (var i = nColumns-1; i>=0; i--) {
-        console.log (" x -checking "+gameBoardArray[i][nRows]);
+        console.log (" column -checking "+gameBoardArray[i][nRows]);
         if (gameBoardArray[nRows][i]=== playerNumber) {
             currentVectorSequence ++;
             if (currentVectorSequence > highestVectorSequence) {highestVectorSequence=currentVectorSequence}
@@ -135,7 +144,7 @@ function updateGameboardWithMove (playerNumber, nColumns, nRows) {
         }
     }
     for (var i = nColumns+1; i<gameBoardSize; i++) {
-        console.log (" x +checking "+gameBoardArray[i][nRows]);
+        console.log (" column +checking "+gameBoardArray[i][nRows]);
         if (gameBoardArray[nColumns][i]=== playerNumber) {
             currentVectorSequence ++;
             if (currentVectorSequence > highestVectorSequence) {highestVectorSequence=currentVectorSequence}
@@ -144,10 +153,10 @@ function updateGameboardWithMove (playerNumber, nColumns, nRows) {
         }
     }
 
-    // ==== Y axis checks ====
+    // ==== row connector checks ====
     currentVectorSequence =1;
     for (var i = nRows-1; i>=0; i--) {
-        console.log (" y -checking "+gameBoardArray[nColumns][i]);
+        console.log (" row -checking "+gameBoardArray[nColumns][i]);
         if (gameBoardArray[nRows][i]=== playerNumber) {
             currentVectorSequence ++;
             if (currentVectorSequence > highestVectorSequence) {highestVectorSequence=currentVectorSequence}
@@ -156,7 +165,7 @@ function updateGameboardWithMove (playerNumber, nColumns, nRows) {
         }
     }
     for (var i = nRows+1; i<gameBoardSize; i++) {
-        console.log (" y +checking "+gameBoardArray[nColumns][i])
+        console.log (" row +checking "+gameBoardArray[nColumns][i])
         if (gameBoardArray[nColumns][i]=== playerNumber) {
             currentVectorSequence ++;
             if (currentVectorSequence > highestVectorSequence) {highestVectorSequence=currentVectorSequence}
@@ -229,8 +238,7 @@ function updateGameboardWithMove (playerNumber, nColumns, nRows) {
             break;
         }
     }
+    console.log("Highest sequence: "+ highestVectorSequence);
     return highestVectorSequence;
 }
 
-function AnyFunction() {}
-function AnyFunction2() {}
