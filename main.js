@@ -39,8 +39,6 @@ function addEventListeners() {
     $('.row').on("click", ".square", playerOneAndTwo);
 }
 
-
-
 function playerOneAndTwo() {
     if ($(this).hasClass("notAvailable")) {return}
     $(this).addClass("notAvailable");
@@ -104,7 +102,6 @@ function updateGameboardWithMove (playerNumber, nColumns, nRows) {
             break;
         }
     }
-
 
     // ==== XminYmin -> XmaxYmax upperBoundary axis check ====
     var checkLimits = 0;
