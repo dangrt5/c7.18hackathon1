@@ -113,9 +113,7 @@ function updateGameboardWithMove (playerNumber, nColumns, nRows) {
     }
 
 
-
     // ==== XminYmin -> XmaxYmax upperBoundary axis check ====
-
     var checkLimits = 0;
     currentVectorSequence =1;
     if (nColumns<nRows) {
