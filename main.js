@@ -1,9 +1,11 @@
 $(document).ready(initializeApp);
 
+// === globals ===
 var gameBoardArray = [];
 var gameBoardSize = 0;
 var currentPlayer = 1;
 var gridSize = gridSize();
+var winCondition = 3;
 
 function populateGameBoardArray(boardSize) {
     // resets gameboard Array, no visible front-end effect
@@ -56,7 +58,8 @@ function playerOneAndTwo() {
         currentSquareClicked.text('O');
     }
     currentPlayer = 1 - currentPlayer;
-    updateGameboardWithMove(currentPlayer, columnCoordinate, rowCoordinate);
+    var retVal = updateGameboardWithMove(currentPlayer, columnCoordinate, rowCoordinate);
+
 }
 
 function gridSize() {
