@@ -1,0 +1,102 @@
+@font-face {
+  font-family: alphaFont;
+  src: url("fonts/font2.otf");
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-size: 0;
+    background: url("images/background.jpg");
+    background-size: 110% auto;
+}
+
+.header {
+    text-align: center;
+    border-bottom: 1px solid black;
+    font-size: 2vw;
+}
+
+.header h1 {
+  margin: 0;
+  font-family: alphaFont;
+}
+
+.content {
+    width: 50%;
+    height: 70vh;
+    margin: auto;
+}
+
+.gameBoard {
+    position: relative;
+    width: 40vw;
+    height: 60vh;
+    margin: auto;
+    font-family: alphaFont;
+}
+
+.row .column:first-of-type {
+  border-left: 0;
+}
+
+div.row {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 33.3%;
+}
+
+.square {
+    height: 100%;
+    width: 33.3%;
+    display: inline-block;
+    /* background-color: lawngreen; */
+    border: 1px solid black;
+    font-size: 8vw;
+    text-align: center;
+    vertical-align: top;
+}
+
+.resetbuttonContainer {
+  border: solid black 1px;
+}
+
+.resetButtons {
+  text-align: center;
+}
+
+.resetButtons button {
+  width: 9vw;
+  height: 7vh;
+  margin: 0 2%;
+  font-size: 1vw;
+}
+
+.scoreAndPlayers {
+    position: relative;
+    font-size: 1.5vw;
+    text-align: center;
+}
+
+.scoreAndPlayers h1 {
+  display: inline-block;
+  margin: 1% 3%;
+}
+
+.scoreAndPlayers span {
+  font-family: alphaFont;
+}
+
+.notAvailable {}
+
+.X {
+  color: #53a239;
+}
+
+.O {
+  color: #e21d26;
+}
