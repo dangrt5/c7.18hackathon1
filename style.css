@@ -12,6 +12,7 @@ body {
     font-size: 0;
     background: url("images/background.jpg");
     background-size: 110% auto;
+    background-repeat: no-repeat;
 }
 
 .header {
