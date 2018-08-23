@@ -29,6 +29,20 @@ function createGameBoard(boardSize) {
        squares.appendTo(row);
     }
     row.appendTo(".gameBoard");
+    if (boardSize === "3") {
+
+      $(".gameBoard").addClass("threeByThreeGameBoard");
+      $(".square").addClass("threeByThreeSquares");
+    }
+    if (boardSize === "4") {
+      $(".gameBoard").addClass("fourByFourGameBoard");
+      $(".square").addClass("fourByFourSquares");
+    }
+    if (boardSize === "5") {
+      $(".gameBoard").addClass("fiveByFiveGameBoard");
+      $(".square").addClass("fiveByFiveSquares");
+      $(".square").css("font-size", "5vw");
+    }
   }
 }
 
