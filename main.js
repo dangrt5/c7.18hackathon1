@@ -52,19 +52,20 @@ function initializeApp() {
 }
 
 function addEventListeners() {
-    $('.resetButtons').on('click', 'button' ,gridSize);
     $('.gameBoard').on('click', '.square', playerOneAndTwo);
-
+    $('.resetButtons:not(.reset)').on('click', 'button' ,gridSize);
+    $('button.reset').click(newGame);
 }
 
 function playerOneAndTwo() {
-    if ($(this).hasClass("notAvailable")) {
-      return;
-    }
-    $(this).addClass("notAvailable");
     var currentSquareClicked = $(this);
     var columnCoordinate = parseInt(currentSquareClicked.attr('columns'));
     var rowCoordinate = parseInt(currentSquareClicked.parent().attr('rows'));
+
+    if ($(this).hasClass("notAvailable")) {
+        return;
+    }
+    $(this).addClass("notAvailable");
 
     if (currentPlayer === 1) {
         currentSquareClicked.text('X');
@@ -82,6 +83,11 @@ function gridSize() {
     $('.gameBoard').empty();
     createGameBoard(gridSizeButton);
 
+}
+
+function newGame() {
+    $('.square').remove();
+    populateGameBoardArray(3);
 }
 
 function updateGameboardWithMove (playerNumber, nColumns, nRows) {
