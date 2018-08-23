@@ -30,18 +30,37 @@ function createGameBoard(boardSize) {
     }
     row.appendTo(".gameBoard");
     if (boardSize === "3") {
-
-      $(".gameBoard").addClass("threeByThreeGameBoard");
-      $(".square").addClass("threeByThreeSquares");
+      $(".gameBoard").css({
+        "width": "40vw",
+        "height": "65vh"
+      });
+      $(".square").css({
+        "width": "33.3%",
+        "height": "100%",
+        "font-size": "9vw"
+      });
     }
-    if (boardSize === "4") {
-      $(".gameBoard").addClass("fourByFourGameBoard");
-      $(".square").addClass("fourByFourSquares");
+    else if (boardSize === "4") {
+      $(".gameBoard").css({
+        "width": "50vw",
+        "height": "51vh"
+      });
+      $(".square").css({
+        "width": "24.3%",
+        "height": "100%",
+        "font-size": "7vw"
+      });
     }
-    if (boardSize === "5") {
-      $(".gameBoard").addClass("fiveByFiveGameBoard");
-      $(".square").addClass("fiveByFiveSquares");
-      $(".square").css("font-size", "5vw");
+    else if (boardSize === "5") {
+      $(".gameBoard").css({
+        "width": "52vw",
+        "height": "41vh"
+      });
+      $(".square").css({
+        "width": "19.1%",
+        "height": "100%",
+        "font-size": "5vw"
+      });
     }
   }
 }
@@ -222,6 +241,4 @@ function updateGameboardWithMove (playerNumber, nRows, nColumns) {
     console.log("Highest sequence: "+ highestVectorSequence);
     return highestVectorSequence;
 }
-
-
 
