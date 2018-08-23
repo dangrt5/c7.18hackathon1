@@ -6,7 +6,6 @@ var gameBoardSize = 0;
 var currentPlayer = 1;
 var winCondition = 3;
 
-
 function populateGameBoardArray(boardSize) {
     // resets gameboard Array, no visible front-end effect
     gameBoardSize = boardSize;
@@ -108,6 +107,7 @@ function reportWinner (currentPlayer) {
     modalDiv.click( function () {
         modalDiv.css("display","none");
     })
+    playSound('sounds/joker.mp3');
 }
 
 function gridSize() {
@@ -119,7 +119,13 @@ function gridSize() {
 
 function newGame() {
     $('.square').remove();
+    gameBoardArray.splice(0);
     populateGameBoardArray(3);
+}
+
+function playSound(sound) {
+    var audio = new Audio(sound);
+    audio.play();
 }
 
 function updateGameboardWithMove (playerNumber, nRows, nColumns) {
