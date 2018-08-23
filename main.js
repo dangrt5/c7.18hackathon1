@@ -80,18 +80,17 @@ function playerOneAndTwo() {
     var currentSquareClicked = $(this);
     var columnCoordinate = parseInt(currentSquareClicked.attr('columns'));
     var rowCoordinate = parseInt(currentSquareClicked.parent().attr('rows'));
-
     if ($(this).hasClass("notAvailable")) {
         return;
     }
     $(this).addClass("notAvailable");
-
     if (currentPlayer === 1) {
         currentSquareClicked.text('X');
     } else {
         currentSquareClicked.addClass("O");
         currentSquareClicked.text('O');
     }
+    playClickSoundEffect();
     currentPlayer = 1 - currentPlayer;
     occupiedSquares ++;
     if  (updateGameboardWithMove(currentPlayer, columnCoordinate, rowCoordinate) >= winCondition) {
@@ -101,7 +100,14 @@ function playerOneAndTwo() {
         reportGameEnded(-1);
     }
 }
+
+
+function playClickSoundEffect() {
+  $(".clickSound").get(0).play();
+}
+
 function reportGameEnded (currentPlayer) {
+
     var modalDiv = $("#myModal");
     if (currentPlayer>-1) {
         $("#winnerInformation").text("Winner is " + currentPlayer);
@@ -112,6 +118,7 @@ function reportGameEnded (currentPlayer) {
     modalDiv.click( function () {
         modalDiv.css("display","none");
     })
+    playSound('sounds/joker.mp3');
 }
 
 function gridSize() {
@@ -122,9 +129,14 @@ function gridSize() {
 
 function newGame() {
     $('.square').remove();
+    gameBoardArray.splice(0);
     populateGameBoardArray(3);
 }
 
+function playSound(sound) {
+    var audio = new Audio(sound);
+    audio.play();
+}
 
 function updateGameboardWithMove (playerNumber, nRows, nColumns) {
     var highestVectorSequence = 1;
@@ -243,4 +255,3 @@ function updateGameboardWithMove (playerNumber, nRows, nColumns) {
     }
     return highestVectorSequence;
 }
-
