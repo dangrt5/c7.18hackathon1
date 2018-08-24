@@ -121,6 +121,15 @@ function reportGameEnded (currentPlayer) {
     var modalDiv = $("#myModal");
     if (currentPlayer>-1) {
         $("#winnerInformation").text("Winner is " + currentPlayer);
+        if (currentPlayer===1) {
+            var spanId = $("#player1Score");
+            console.log(parseFloat(spanId.text()));
+            spanId.text(parseFloat(spanId.text())+1);
+        } else {
+            var spanId = $("#player2Score");
+            console.log(parseFloat(spanId.text()));
+            spanId.text(parseFloat(spanId.text())+1);
+        }
     } else {
         $("#winnerInformation").text("No Winner!");
     }
@@ -137,6 +146,8 @@ function gridSize() {
     var gridSizeButton = $(this).attr('gridSize');
     $('.gameBoard').empty();
     createGameBoard(gridSizeButton);
+    populateGameBoardArray(gridSizeButton);
+
 }
 
 function newGame() {
