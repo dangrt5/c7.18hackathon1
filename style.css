@@ -106,8 +106,7 @@ div.row {
     overflow: auto;
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    color: lime;
-    font-size: 50px;
+    font-size: 4vw;
     text-align: center;
 }
 .modal {
@@ -118,9 +117,9 @@ div.row {
     min-height: 50%;
     background-color: white;
     transform:translate(-50%,-50%);
-    font-size: 50px;
+    font-size: 7vw;
+    font-family: alphaFont;
     text-align: center;
-    color: lime;
 }
 
 .X {
@@ -139,5 +138,3 @@ div.row {
     animation-name: actionButton;
     animation-duration: 1.5s;
 }
-
-
