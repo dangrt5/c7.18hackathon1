@@ -121,11 +121,9 @@ function reportGameEnded (currentPlayer) {
         $("#winnerInformation").text("Winner is " + currentPlayer);
         if (currentPlayer===1) {
             var spanId = $("#player1Score");
-            console.log(parseFloat(spanId.text()));
             spanId.text(parseFloat(spanId.text())+1);
         } else {
             var spanId = $("#player2Score");
-            console.log(parseFloat(spanId.text()));
             spanId.text(parseFloat(spanId.text())+1);
         }
     } else {
