@@ -74,9 +74,6 @@ function createGameBoard(boardSize) {
 
 function initializeApp() {
     addEventListeners();
-    $(".resetButtons > button").on('animationend', function(event) {
-        $(this).removeClass('flashGreen');
-    });
 }
 
 function addEventListeners() {
@@ -84,13 +81,16 @@ function addEventListeners() {
     $(".resetButtons").click(clickSound);
     $('.resetButtons:not(.reset)').on('click', 'button' ,gridSize);
     $('button.reset').click(newGame);
+    $(".resetButtons > button").on('animationend', function(event) {
+        $(this).removeClass('flashGreen');
+    });
 }
 
 function playerOneAndTwo() {
     var currentSquareClicked = $(this);
     var columnCoordinate = parseInt(currentSquareClicked.attr('columns'));
     var rowCoordinate = parseInt(currentSquareClicked.parent().attr('rows'));
-    
+
 
     if ($(this).hasClass("notAvailable")) {
         return;
@@ -118,7 +118,7 @@ function playerOneAndTwo() {
 function reportGameEnded (currentPlayer) {
     var modalDiv = $("#myModal");
     if (currentPlayer>-1) {
-        $("#winnerInformation").text("Winner is " + currentPlayer);
+        $("#winnerInformation").text("Winner is " + displayPlayerNumber());
         if (currentPlayer===1) {
             var spanId = $("#player1Score");
             console.log(parseFloat(spanId.text()));
@@ -147,6 +147,14 @@ function gridSize() {
     createGameBoard(gridSizeButton);
     populateGameBoardArray(gridSizeButton);
 
+}
+
+function displayPlayerNumber() {
+  if(currentPlayer === 1) {
+    return "Player 1";
+  } else {
+    return "Player 2";
+  }
 }
 
 function newGame() {
