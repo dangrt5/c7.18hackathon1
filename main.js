@@ -74,14 +74,9 @@ function createGameBoard(boardSize) {
 
 function initializeApp() {
     addEventListeners();
-    //$("#newGame").on('animationend', function(event) {
-    //    $(this).removeClass('flashRed');
-    //});
     $(".resetButtons > button").on('animationend', function(event) {
-        $(this).removeClass('flashRed');
+        $(this).removeClass('flashGreen');
     });
-
-    ;
 }
 
 function addEventListeners() {
@@ -95,10 +90,12 @@ function playerOneAndTwo() {
     var currentSquareClicked = $(this);
     var columnCoordinate = parseInt(currentSquareClicked.attr('columns'));
     var rowCoordinate = parseInt(currentSquareClicked.parent().attr('rows'));
+    
 
     if ($(this).hasClass("notAvailable")) {
         return;
     }
+
     $(this).addClass("notAvailable");
     if (currentPlayer === 1) {
         currentSquareClicked.text('X');
@@ -108,6 +105,7 @@ function playerOneAndTwo() {
     }
     playSound(sounds.click);
     currentPlayer = 1 - currentPlayer;
+    currentPlayersTurn();
     occupiedSquares ++;
     if  (updateGameboardWithMove(currentPlayer, columnCoordinate, rowCoordinate) >= winCondition) {
         reportGameEnded (currentPlayer);
@@ -142,7 +140,8 @@ function reportGameEnded (currentPlayer) {
 }
 
 function gridSize() {
-    $(this).addClass('flashRed');
+    currentPlayersTurn();
+    $(this).addClass('flashGreen');
     var gridSizeButton = $(this).attr('gridSize');
     $('.gameBoard').empty();
     createGameBoard(gridSizeButton);
@@ -151,8 +150,11 @@ function gridSize() {
 }
 
 function newGame() {
+    currentPlayer = 1;
+    currentPlayersTurn();
     $('.square').remove();
-    $(this).addClass('flashRed');
+    populateGameBoardArray(3);
+    $(this).addClass('flashGreen');
 }
 
 function playSound(sound) {
@@ -162,6 +164,16 @@ function playSound(sound) {
 
 function clickSound() {
   playSound(sounds.click);
+}
+
+function currentPlayersTurn() {
+    if (currentPlayer === 1) {
+        $('.playerOneTurn').css('color', '#955bbc');
+        $('.playerTwoTurn').css('color', 'black');
+    } else {
+        $('.playerOneTurn').css('color', 'black');
+        $('.playerTwoTurn').css('color', '#955bbc');
+    }
 }
 
 function updateGameboardWithMove (playerNumber, nRows, nColumns) {
