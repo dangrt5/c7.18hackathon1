@@ -4,7 +4,7 @@ $(document).ready(initializeApp);
 var gameBoardArray = [];
 var gameBoardSize = 0;
 var currentPlayer = 1;
-var winCondition = 3;
+var winCondition;
 var occupiedSquares =0;
 var sounds = {
     click: 'sounds/clickSound.mp3',
@@ -27,6 +27,8 @@ function populateGameBoardArray(boardSize) {
 
 function createGameBoard(boardSize) {
     currentPlayer = 1;
+    populateGameBoardArray(boardSize);
+    winCondition = boardSize;
   for(var x = 0 ; x < boardSize; x++) {
      var row = $("<div>").addClass("row").attr('rows', x);
      for(var y = 0; y < boardSize; y++) {
@@ -117,6 +119,15 @@ function reportGameEnded (currentPlayer) {
     var modalDiv = $("#myModal");
     if (currentPlayer>-1) {
         $("#winnerInformation").text("Winner is " + currentPlayer);
+        if (currentPlayer===1) {
+            var spanId = $("#player1Score");
+            console.log(parseFloat(spanId.text()));
+            spanId.text(parseFloat(spanId.text())+1);
+        } else {
+            var spanId = $("#player2Score");
+            console.log(parseFloat(spanId.text()));
+            spanId.text(parseFloat(spanId.text())+1);
+        }
     } else {
         $("#winnerInformation").text("No Winner!");
     }
@@ -134,6 +145,8 @@ function gridSize() {
     var gridSizeButton = $(this).attr('gridSize');
     $('.gameBoard').empty();
     createGameBoard(gridSizeButton);
+    populateGameBoardArray(gridSizeButton);
+
 }
 
 function newGame() {
