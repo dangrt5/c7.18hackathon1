@@ -4,7 +4,7 @@ $(document).ready(initializeApp);
 var gameBoardArray = [];
 var gameBoardSize = 0;
 var currentPlayer = 1;
-var winCondition = 3;
+var winCondition;
 var occupiedSquares =0;
 var sounds = {
     click: 'sounds/clickSound.mp3',
@@ -27,6 +27,8 @@ function populateGameBoardArray(boardSize) {
 
 function createGameBoard(boardSize) {
     currentPlayer = 1;
+    populateGameBoardArray(boardSize);
+    winCondition = boardSize;
   for(var x = 0 ; x < boardSize; x++) {
      var row = $("<div>").addClass("row").attr('rows', x);
      for(var y = 0; y < boardSize; y++) {
@@ -139,7 +141,6 @@ function gridSize() {
 
 function newGame() {
     $('.square').remove();
-    populateGameBoardArray(3);
     $(this).addClass('flashRed');
 }
 
